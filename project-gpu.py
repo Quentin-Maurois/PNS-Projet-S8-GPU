@@ -47,6 +47,9 @@ def main():
 
     # Set the thread block size
     block_size = (16, 16)
+    # Correct the block size if tb_value is provided
+    if tb_value:
+        block_size = (tb_value, tb_value)
     grid_size = ((input_img_array.shape[1] - 1) // block_size[0] + 1,  # Corrected dimension
                  (input_img_array.shape[0] - 1) // block_size[1] + 1)  # Corrected dimension
 
@@ -200,7 +203,6 @@ def hysteresis_kernel(input_array, output_array, low_threshold, high_threshold):
                 else:
                     output_array[y, x, c] = 128
                         
-
 
 if __name__ == "__main__":
     main()
